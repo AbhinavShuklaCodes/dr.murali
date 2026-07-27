@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. M.J. Murali - Digital Business Card</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient Background Overlay -->
+  <div class="bg-glow"></div>
+
+  <!-- Main Card Wrapper (Single Card) -->
+  <main class="card-wrapper">
+    <div class="card-container">
+      
+      <!-- Hidden Checkbox for Pure CSS Flip on Click/Tap -->
+      <input type="checkbox" id="card-flip-toggle" class="flip-checkbox">
+      
+      <!-- Label wrapping card inner to capture click anywhere on card -->
+      <label for="card-flip-toggle" class="card-inner">
+        
+        <!-- ================= FRONT FACE ================= -->
+        <div class="card-face card-front">
+          
+          <div class="qr-container">
+            <img src="assets/qr.png" alt="Scan QR Code" class="qr-image">
+          </div>
+          
+          <h1 class="doctor-name">Dr. M.J. Murali</h1>
+          <p class="designation">ENDODONTIST & IMPLANTOLOGIST</p>
+          
+          <div class="divider"></div>
+          
+          <div class="contact-list">
+            <a href="tel:+919845079479" class="contact-item">
+              <div class="icon-box">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <span class="contact-text">+91 98450 79479</span>
+            </a>
+            
+            <a href="mailto:drmuralimj@yahoo.com" class="contact-item">
+              <div class="icon-box">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <span class="contact-text">drmuralimj@yahoo.com</span>
+            </a>
+            
+            <a href="https://allcaredentalcentre.in" target="_blank" rel="noopener" class="contact-item">
+              <div class="icon-box">
+                <i class="fa-solid fa-globe"></i>
+              </div>
+              <span class="contact-text">www.allcaredentalcentre.in</span>
+            </a>
+            
+            <a href="https://www.instagram.com/allcaredentalcentreindiranagar/" target="_blank" rel="noopener" class="contact-item">
+              <div class="icon-box">
+                <i class="fa-brands fa-instagram"></i>
+              </div>
+              <span class="contact-text">allcaredentalcentreindiranagar</span>
+            </a>
+            
+            <a href="https://maps.google.com/?q=545+CMH+Road+Indiranagar+Bengaluru" target="_blank" rel="noopener" class="contact-item">
+              <div class="icon-box">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <span class="contact-text">545, CMH Road, Opp. Motherhood Hosp., Stage 1, Indiranagar, Bengaluru 560038</span>
+            </a>
+          </div>
+
+          <div class="card-footer">
+            <img src="assets/logo.png" alt="All Care Dental Centre Logo" class="brand-logo">
+          </div>
+          
+        </div>
+
+        <!-- ================= BACK FACE ================= -->
+        <div class="card-face card-back card-back-theme">
+          
+          <div class="back-overlay"></div>
+          
+          <div class="back-header">
+            <img src="assets/signature.png" alt="Doctor Signature" class="signature">
+            <h2 class="back-doctor-name">Dr. M.J. Murali</h2>
+            <p class="back-designation">Endodontist & Implantologist</p>
+            
+            <div class="social-links">
+              <a href="https://facebook.com" target="_blank" rel="noopener" class="social-btn">
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+              <a href="https://www.instagram.com/allcaredentalcentreindiranagar/" target="_blank" rel="noopener" class="social-btn">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-btn">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Doctor portrait anchored safely to bottom -->
+          <div class="portrait-wrapper">
+            <img src="assets/person.png" alt="Dr. M.J. Murali" class="doctor-portrait">
+          </div>
+
+          <!-- Subtle vertical text on right border -->
+          <div class="vertical-text">ALL CARE DENTAL CENTRE • INDIRANAGAR</div>
+
+        </div>
+
+      </label>
+    </div>
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,444 @@
+/* ========================================================
+   1. ROOT VARIABLES
+   ======================================================== */
+:root {
+  --primary-blue: #123D8C;
+  --secondary-blue: #102F6E;
+  --dark-navy: #081220;
+  --light-bg: #E9EDF2;
+  --card-bg: #FFFFFF;
+  --icon-bg: #F4F6F8;
+  --text-dark: #222222;
+  --text-muted: #555555;
+  --text-light: rgba(255, 255, 255, 0.95);
+  --font-family: 'Montserrat', sans-serif;
+  --card-width: 320px;
+  --card-height: 560px;
+  --card-radius: 26px;
+  --shadow-premium: 0 30px 70px rgba(0, 0, 0, 0.18);
+  --transition-smooth: 0.4s ease;
+  --flip-transition: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========================================================
+   2. RESET & BASE STYLES
+   ======================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--light-bg);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  position: relative;
+  background-image: 
+    radial-gradient(rgba(18, 61, 140, 0.08) 1.2px, transparent 1.2px),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 65%),
+    radial-gradient(circle at 20% 20%, rgba(18, 61, 140, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 80% 80%, rgba(16, 47, 110, 0.1) 0%, transparent 45%),
+    linear-gradient(135deg, #F0F4F8 0%, #E2E7EE 100%);
+  background-size: 24px 24px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+  background-position: 0 0, center, center, center, center;
+  padding: 20px;
+}
+
+.bg-glow {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.7) 0%, rgba(233, 237, 242, 0) 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ========================================================
+   3. WRAPPER
+   ======================================================== */
+.card-wrapper {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* ========================================================
+   4. CARD CONTAINER & 3D FLIP MECHANISM
+   ======================================================== */
+.card-container {
+  width: var(--card-width);
+  height: var(--card-height);
+  perspective: 1500px;
+  position: relative;
+  transition: transform var(--transition-smooth);
+}
+
+.card-container:hover {
+  transform: translateY(-6px);
+}
+
+/* Hidden checkbox */
+.flip-checkbox {
+  display: none;
+}
+
+.card-inner {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform var(--flip-transition);
+  cursor: pointer;
+  border-radius: var(--card-radius);
+  user-select: none;
+}
+
+/* Flip ONLY when clicked/tapped (checkbox is checked) */
+.flip-checkbox:checked + .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Base Card Face */
+.card-face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-premium);
+  background-color: var(--card-bg);
+}
+
+/* Front Face */
+.card-front {
+  transform: rotateY(0deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 16px 14px;
+  box-sizing: border-box;
+}
+
+/* Back Face */
+.card-back {
+  transform: rotateY(180deg);
+}
+
+/* ========================================================
+   5. FRONT CARD STYLES
+   ======================================================== */
+/* QR Code Container */
+.qr-container {
+  width: 84px;
+  height: 84px;
+  background-color: var(--primary-blue);
+  border-radius: 12px;
+  padding: 6px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 18px rgba(18, 61, 140, 0.22);
+  animation: float 4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.qr-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 2px;
+  box-sizing: border-box;
+}
+
+/* Doctor Name & Designation */
+.doctor-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary-blue);
+  text-align: center;
+  margin-bottom: 2px;
+  line-height: 1.2;
+  flex-shrink: 0;
+}
+
+.designation {
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  color: var(--text-muted);
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* Divider Line */
+.divider {
+  width: 46px;
+  height: 2.5px;
+  background-color: var(--primary-blue);
+  border-radius: 999px;
+  margin: 8px auto 10px;
+  flex-shrink: 0;
+}
+
+/* ========================================================
+   6. CONTACT SECTION
+   ======================================================== */
+.contact-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: auto;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  transition: transform 0.25s ease;
+  position: relative;
+  z-index: 5;
+}
+
+.contact-item:hover {
+  transform: translateX(4px);
+}
+
+.icon-box {
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  border-radius: 50%;
+  background-color: var(--icon-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary-blue);
+  font-size: 12.5px;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.contact-item:hover .icon-box {
+  background-color: var(--primary-blue);
+  color: #ffffff;
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(18, 61, 140, 0.3);
+}
+
+.contact-text {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-dark);
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+/* ========================================================
+   7. FOOTER
+   ======================================================== */
+.card-footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 4px;
+  flex-shrink: 0;
+}
+
+/* Extremely prominent, large brand logo anchor */
+.brand-logo {
+  width: 200px;
+  max-width: 95%;
+  height: auto;
+  max-height: 65px;
+  object-fit: contain;
+  display: block;
+}
+
+/* ========================================================
+   8. BACK CARD STYLES
+   ======================================================== */
+.card-back-theme {
+  background: 
+    radial-gradient(circle at 50% 20%, #143D8D 0%, #102F6E 50%, #081220 100%);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 16px 0;
+  color: #ffffff;
+  box-sizing: border-box;
+}
+
+.back-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    url('assets/background.jpg') center/cover no-repeat;
+  mix-blend-mode: overlay;
+  opacity: 0.8;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.back-header {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Exceptionally large, highly visible signature */
+.signature {
+  width: 270px;
+  max-width: 95%;
+  height: auto;
+  max-height: 85px;
+  object-fit: contain;
+  opacity: 1;
+  filter: brightness(0) invert(1) drop-shadow(0 3px 8px rgba(0,0,0,0.7));
+  margin-bottom: 4px;
+}
+
+.back-doctor-name {
+  font-size: 19px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 2px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.back-designation {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-light);
+  letter-spacing: 0.8px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Social Links */
+.social-links {
+  display: flex;
+  gap: 14px;
+  position: relative;
+  z-index: 5;
+}
+
+.social-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: var(--primary-blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14.5px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.social-btn:hover {
+  background-color: var(--primary-blue);
+  color: #ffffff;
+  transform: scale(1.15);
+  box-shadow: 0 6px 18px rgba(18, 61, 140, 0.5);
+}
+
+/* Doctor Portrait Section */
+.portrait-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 260px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.doctor-portrait {
+  width: auto;
+  max-width: 86%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: bottom;
+  filter: drop-shadow(0 -4px 12px rgba(0, 0, 0, 0.35));
+}
+
+/* Vertical side text */
+.vertical-text {
+  position: absolute;
+  right: -55px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.4;
+  color: #ffffff;
+  z-index: 2;
+  white-space: nowrap;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+/* ========================================================
+   9. ANIMATIONS
+   ======================================================== */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* ========================================================
+   10. MEDIA QUERIES
+   ======================================================== */
+@media (max-width: 480px) {
+  body {
+    padding: 15px;
+  }
+
+  .card-container {
+    width: 92vw;
+    max-width: 320px;
+  }
+}
